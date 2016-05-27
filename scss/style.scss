@@ -1,0 +1,194 @@
+@import url(http://fonts.googleapis.com/css?family=Lustria|Lato:300,400,700);
+
+@import 'mixins/reset';
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+
+// Vars
+$body-background: #212121;
+$body-color: #f5f5f5;
+
+$animation-easing: cubic-bezier(1, -.5, 0, 1);
+
+$weather-background: #8ba892;
+$weather-color: #fff;
+$weather-title: #d1dcd3;
+$border-color: #ce7d3b;
+
+$pale-gold: #e3bb88;
+$di-serria: #d89864;
+$brandy-rose: #c1887d;
+$santa-fe: #b1695a;
+$rose-ebony: #644749;
+
+$days: $pale-gold, $di-serria, $brandy-rose, $santa-fe, $rose-ebony;
+
+@for $i from 1 through length($days) {
+  .weather__item:nth-of-type(#{$i}) {
+    background: nth($days, $i);
+  }
+}
+
+// Main Styles
+* {
+  box-sizing: border-box;
+}
+
+html {font-size: 16px;}
+
+body {
+  background: $body-background;
+  color: $body-color;
+  font-family: 'Lato';
+  font-size: 1.4rem;
+  line-height: 1.6;
+}
+
+.container {
+  margin: 20px auto;
+  max-width: 320px;
+}
+
+// Weather App
+.weather {
+  background: $weather-background;
+  color: $weather-color;
+  overflow: hidden;
+
+  &__header {
+    color: $weather-title;
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+    padding: 20px;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  &__item {
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding: 20px 10px;
+    transition: border .3s 0s,
+                padding .3s .5s;
+    width: 100%;
+
+    &:hover {
+      border-color: $border-color;
+    }
+
+    .weather__icon,
+    .weather__info {
+      opacity: 0;
+      transition: all .3s .3s $animation-easing;
+    }
+
+    .weather__info {
+      transform: translateY(50px);
+      transition: opacity .3s 0s $animation-easing,
+                  transform .3s 0s $animation-easing;
+    }
+
+
+    &.active {
+      border-color: $border-color;
+      padding: 50px 10px 100px;
+      transition-delay: 0s;
+
+      .weather__icon,
+      .weather__info {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: .3s;
+      }
+    }
+  }
+
+  &__icon,
+  &__details {
+    width: 50%;
+  }
+
+  &__icon {
+    font-size: 3rem;
+    position: relative;
+    transform: translateX(-50px);
+
+    i {
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &__details {
+    padding-left: 30px;
+    position: relative;
+  }
+
+  &__info {
+    left: 30px;
+    position: absolute;
+    width: calc(100% - 30px);
+  }
+
+  &__text {
+    font-size: 1rem;
+  }
+}
+
+// converts icon font codes from simpleweather.js to Weather Icons from Erik Flowers
+
+.icon-0::before { content: '\f056'; }
+.icon-1::before { content: '\f03b'; }
+.icon-2::before { content: '\f01d'; }
+.icon-3::before { content: '\f01e'; }
+.icon-4::before { content: '\f01d'; }
+.icon-5::before { content: '\f017'; }
+.icon-6::before { content: '\f017'; }
+.icon-7::before { content: '\f017'; }
+.icon-8::before { content: '\f017'; }
+.icon-9::before { content: '\f01b'; }
+.icon-10::before { content: '\f017'; }
+.icon-11::before { content: '\f01b'; }
+.icon-12::before { content: '\f01b'; }
+.icon-13::before { content: '\f01b'; }
+.icon-14::before { content: '\f01b'; }
+.icon-15::before { content: '\f017'; }
+.icon-16::before { content: '\f01b'; }
+.icon-17::before { content: '\f017'; }
+.icon-18::before { content: '\f015'; }
+.icon-19::before { content: '\f014'; }
+.icon-20::before { content: '\f014'; }
+.icon-21::before { content: '\f014'; }
+.icon-22::before { content: '\f014'; }
+.icon-23::before { content: '\f014'; }
+.icon-24::before { content: '\f011'; }
+.icon-25::before { content: '\f011'; }
+.icon-26::before { content: '\f013'; }
+.icon-27::before { content: '\f031'; }
+.icon-28::before { content: '\f002'; }
+.icon-29::before { content: '\f031'; }
+.icon-30::before { content: '\f002'; }
+.icon-31::before { content: '\f02e'; }
+.icon-32::before { content: '\f00d'; }
+.icon-33::before { content: '\f02e'; }
+.icon-34::before { content: '\f00d'; }
+.icon-35::before { content: '\f017'; }
+.icon-36::before { content: '\f00d'; }
+.icon-37::before { content: '\f01d'; }
+.icon-38::before { content: '\f01d'; }
+.icon-39::before { content: '\f01d'; }
+.icon-40::before { content: '\f01a'; }
+.icon-41::before { content: '\f017'; }
+.icon-42::before { content: '\f01b'; }
+.icon-43::before { content: '\f017'; }
+.icon-44::before { content: '\f031'; }
+.icon-45::before { content: '\f01d'; }
+.icon-46::before { content: '\f015'; }
+.icon-47::before { content: '\f01d'; }
